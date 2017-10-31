@@ -27,10 +27,35 @@ const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
       board[randomRowIndex][randomColumnIndex] = 'B';
       numberOfBombsPlaced++;
     }
-
-    // The code in this while loop has the potential to place bombs on top of already existing bombs. This will be fixed when we learn about control flow.
+    // The code in this while loop no longer has the potential to place bombs on top of already existing bombs. This will be fixed when we learn about control flow.
   }
   return board;
+}
+
+const getNumberOfNeighborBombs = (bombBoard, rowIndex, columnIndex) => {
+  const neighborOffsets = [
+    [-1, -1],
+    [-1, 0],
+    [-1, 1],
+    [0, -1],
+    [0, 1],
+    [1, -1],
+    [1, 0],
+    [1, 1]
+  ]; // we'll store the pairs of [rowOffset, columnOffset] for adjacent neighbors in an array
+  const numberOfRows = bombBoard.length;
+  const numberOfColumns = bombBoard[0].length;
+  let numberOfBombs = 0;
+  neighborOffsets.forEach((offset => {
+    const neighborRowIndex = rowIndex + offset[0];
+    const neighborColumnIndex = columnIndex + offset[1];
+    if (neighborRowIndex >= 0 && neighborRowIndex < numberOfRows && neighborColumnIndex >= 0 && neighborColumnIndex < numberOfColumns) { // this condition makes sure that we are checking legal/valid neighboring tiles
+      if (bombBoard[neighborRowIndex][neighborColumnIndex] = 'B') {
+        numberOfBombs++;
+      }
+    }
+  });
+  return numberOfBombs;
 }
 
 const printBoard = board => {
