@@ -2,7 +2,7 @@ class Game {
   constructor(numberOfRows, numberOfColumns, numberOfBombs) { // When a user creates an instance of a board (using the constructor), they will be asked to specify the size of the board as well as the number of bombs on the board (which is what the parameters represent).
     this._board = new Board(numberOfRows, numberOfColumns, numberOfBombs);
   }
-  playMove = (rowIndex, columnIndex) => {
+  playMove(rowIndex, columnIndex) {
     this._board.flipTile(rowIndex, columnIndex);
     if (this._board.playerBoard[rowIndex][columnIndex] === 'B') {
       console.log('Game over');
