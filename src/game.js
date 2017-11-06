@@ -8,7 +8,7 @@
 // game.playMove(1, 2);
 // When done run `.exit`
 
-import { Board } from '/.board';
+import { Board } from './board';
 
 class Game {
   constructor(numberOfRows, numberOfColumns, numberOfBombs) { // When a user creates an instance of a board (using the constructor), they will be asked to specify the size of the board as well as the number of bombs on the board (which is what the parameters represent).
